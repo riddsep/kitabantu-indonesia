@@ -7,19 +7,29 @@ import { fetchJobListing } from "@/lib/data";
 interface JobContextType {
   jobList: JobListing[];
   getJobById: (id: string) => JobListing | undefined;
+  isLoading: boolean;
 }
 
 const JobContext = createContext<JobContextType | undefined>(undefined);
 
 export function JobProvider({ children }: { children: React.ReactNode }) {
   const [jobList, setJobList] = useState<JobListing[]>([]);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getJobList(): Promise<void> {
-      const data = await fetchJobListing();
-      setJobList(data);
-      console.log(data);
+      try {
+        setLoading(true);
+        const data = await fetchJobListing();
+        setJobList(data);
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     }
+
     getJobList();
   }, []);
 
@@ -28,7 +38,7 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <JobContext.Provider value={{ jobList, getJobById }}>
+    <JobContext.Provider value={{ jobList, getJobById, isLoading }}>
       {children}
     </JobContext.Provider>
   );

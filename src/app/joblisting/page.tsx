@@ -3,13 +3,14 @@
 import Filter from "@/components/filter";
 import JobList from "@/components/joblist";
 import Search from "@/components/search";
+import { JobListSkeleton } from "@/components/ui/skeletons";
 import { useJobContext } from "@/context/useJobContext";
 
 import Link from "next/link";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export default function Page() {
-  const { jobList } = useJobContext();
+  const { jobList, isLoading } = useJobContext();
 
   return (
     <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] ">
@@ -28,11 +29,19 @@ export default function Page() {
           />
         </div>
         <div className="grid grid-cols-3 gap-4 py-10">
-          {jobList.map((job) => (
-            <Link href={`/joblisting/${job.id}`} key={job.id}>
-              <JobList job={job} />
-            </Link>
-          ))}
+          {!isLoading ? (
+            jobList.map((job) => (
+              <Link href={`/joblisting/${job.id}`} key={job.id}>
+                <JobList job={job} />
+              </Link>
+            ))
+          ) : (
+            <div>
+              {jobList.map((job) => (
+                <JobListSkeleton key={job.id} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
