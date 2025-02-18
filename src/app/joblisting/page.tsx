@@ -13,7 +13,7 @@ export default function Page() {
   const { jobList, isLoading } = useJobContext();
 
   return (
-    <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] ">
+    <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]">
       <div className="max-w-[1024px] mx-auto">
         <h1 className="text-2xl py-10 text-center font-medium">
           Dari Cari Kerja Sampai Dapat Kerja, Pasti{" "}
@@ -29,19 +29,15 @@ export default function Page() {
           />
         </div>
         <div className="grid grid-cols-3 gap-4 py-10">
-          {!isLoading ? (
-            jobList.map((job) => (
-              <Link href={`/joblisting/${job.id}`} key={job.id}>
-                <JobList job={job} />
-              </Link>
-            ))
-          ) : (
-            <div>
-              {jobList.map((job) => (
-                <JobListSkeleton key={job.id} />
+          {!isLoading
+            ? jobList.map((job) => (
+                <Link href={`/joblisting/${job.id}`} key={job.id}>
+                  <JobList job={job} />
+                </Link>
+              ))
+            : Array.from({ length: 9 }).map((_, index) => (
+                <JobListSkeleton key={index} />
               ))}
-            </div>
-          )}
         </div>
       </div>
     </div>

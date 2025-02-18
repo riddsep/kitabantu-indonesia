@@ -11,6 +11,7 @@ export default function Filter() {
       <option value="DevelopmentIT">Development & IT</option>
       <option value="DesignCreative">Design & Creative</option>
       <option value="SalesMarketing">Sales & Marketing</option>
+      <option value="SalesMarketing">Product & Management</option>
     </select>
   );
 }
