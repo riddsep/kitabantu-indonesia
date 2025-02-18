@@ -1,29 +1,30 @@
-const shimmer =
-  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
+import { Card, CardBody, CardHeader } from "./card";
 
-export function CardSkeleton() {
+export function JobListSkeleton() {
   return (
-    <div
-      className={`${shimmer} relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
-    >
-      <div className="flex p-4">
-        <div className="h-5 w-5 rounded-md bg-gray-200" />
-        <div className="ml-2 h-6 w-16 rounded-md bg-gray-200 text-sm font-medium" />
-      </div>
-      <div className="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8">
-        <div className="h-7 w-20 rounded-md bg-gray-200" />
-      </div>
-    </div>
+    <Card>
+      <CardHeader>
+        <div className="w-[50px] h-[50px] rounded-full bg-gray-300 animate-pulse" />
+        <div className="flex flex-col gap-2">
+          <div className="w-32 h-4 bg-gray-300 rounded animate-pulse" />
+          <div className="w-24 h-3 bg-gray-300 rounded animate-pulse" />
+        </div>
+      </CardHeader>
+      <CardBody>
+        <SkeletonLine />
+        <SkeletonLine />
+        <SkeletonLine />
+        <SkeletonLine />
+      </CardBody>
+    </Card>
   );
 }
 
-export function CardsSkeleton() {
+function SkeletonLine() {
   return (
-    <>
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
-    </>
+    <div className="flex items-center gap-2">
+      <div className="w-4 h-4 bg-gray-300 rounded animate-pulse" />
+      <div className="w-40 h-3 bg-gray-300 rounded animate-pulse" />
+    </div>
   );
 }
