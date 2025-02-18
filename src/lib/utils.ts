@@ -7,11 +7,6 @@ export function getTimeElapsed(date: string | undefined): string | undefined {
   // Menghitung selisih waktu dalam milidetik
   const timeDifference = currentDate.getTime() - givenDate.getTime();
 
-  // Jika difference negative, berarti diberikan waktu lebih dari waktu sekarang
-  if (timeDifference < 0) {
-    return "Waktu yang diberikan belum tiba";
-  }
-
   // Mengonversi milidetik ke jam
   const hoursElapsed = timeDifference / (1000 * 3600);
 
