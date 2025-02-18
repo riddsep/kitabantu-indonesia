@@ -38,7 +38,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   }, [id, getJobById]);
 
   return (
-    <div className="max-w-[1024px] mx-auto py-10 flex gap-4">
+    <div className="max-w-[1024px] mx-auto py-8 flex flex-col p-2 lg:flex-row gap-4">
       {job ? (
         <>
           <div className="border-2 p-5 shadow rounded-xl flex-1 bg-white">
@@ -71,7 +71,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     <span>{job.salary}</span>
                   </div>
                 </div>
-                <Button className="rounded-3xl">Lamar Cepat</Button>
+                <Button className="rounded-3xl h-8 text-xs">Lamar Cepat</Button>
               </div>
               <div className="ml-auto text-sm">
                 {job.createdAt && getTimeElapsed(job.createdAt)}
