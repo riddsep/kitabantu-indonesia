@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { JobProvider } from "@/context/useJobContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className}  antialiased`}>
         <div className="h-dvh min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]">
-          <Navbar />
-          <main>{children}</main>
+          <JobProvider>
+            <Navbar />
+            <main>{children}</main>
+          </JobProvider>
         </div>
       </body>
     </html>

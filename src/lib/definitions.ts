@@ -1,6 +1,6 @@
 export interface JobListing {
   id: string;
-  title: string;
+  jobTitle: string;
   company: string;
   jobType: string;
   location: string;
@@ -10,4 +10,14 @@ export interface JobListing {
   description: string[];
   requirements: string[];
   createdAt: string;
+}
+
+export interface Job {
+  imageUrl: string;
+  jobTitle: string;
+  company: string;
+  jobType: string;
+  location: string;
+  category: string;
+  salary: string;
 }
