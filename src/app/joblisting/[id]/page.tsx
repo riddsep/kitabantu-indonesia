@@ -12,11 +12,14 @@ import {
 } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { getTimeElapsed } from "@/lib/utils";
+import Chip from "@/components/ui/chip";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { getJobById } = useJobContext();
   const [job, setJob] = useState<JobListing | null>(null);
   const [id, setId] = useState<string | null>(null);
+
+  console.log(job);
 
   useEffect(() => {
     async function fetchParams() {
@@ -38,8 +41,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     <div className="max-w-[1024px] mx-auto py-10 flex gap-4">
       {job ? (
         <>
-          <div className="border-2 p-5 shadow rounded-xl flex-1">
-            <div className="flex gap-4">
+          <div className="border-2 p-5 shadow rounded-xl flex-1 bg-white">
+            <div className="flex gap-4 pb-10 border-b border-black/10">
               <Image
                 src={job.imageUrl}
                 alt="company logo"
@@ -74,9 +77,34 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 {job.createdAt && getTimeElapsed(job.createdAt)}
               </div>
             </div>
+            <div className="py-5">
+              <div>
+                <h1 className="font-semibold ">Deskripsi Pekerjaan</h1>
+                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-sm">
+                  {job.jobDesc.map((desc) => (
+                    <li key={desc}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h1 className="font-semibold">Kualifikasi</h1>
+                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-sm">
+                  {job.jobReq.map((desc) => (
+                    <li key={desc}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="border-2 p-5 shadow rounded-xl">
-            <h1>Benefit Perusahaan</h1>
+          <div className="border-2 p-5 shadow rounded-xl bg-white h-fit">
+            <h1 className="font-semibold">Benefit Perusahaan</h1>
+            <div className="my-2 flex flex-wrap gap-2 max-w-80">
+              <Chip>💸 Competitive Salary</Chip>
+              <Chip>🎁 THR / Bonus system</Chip>
+              <Chip>🍗 Free lunch</Chip>
+              <Chip>👕 Casual Dress Code</Chip>
+              <Chip>📈 Professional Development</Chip>
+            </div>
           </div>
         </>
       ) : (

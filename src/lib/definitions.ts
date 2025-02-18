@@ -7,8 +7,8 @@ export interface JobListing {
   category: string;
   salary: string;
   imageUrl: string;
-  description: string[];
-  requirements: string[];
+  jobDesc: string[];
+  jobReq: string[];
   createdAt: string;
 }
 

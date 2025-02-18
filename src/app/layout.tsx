@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className}  antialiased`}>
-        <div className="h-dvh min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]">
+        <div className=" bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]">
           <JobProvider>
             <Navbar />
             <main>{children}</main>
