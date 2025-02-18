@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className}  antialiased bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]`}
       >
-        <div className="h-screen">
+        <div>
           <JobProvider>
             <Navbar />
             <main>{children}</main>
