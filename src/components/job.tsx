@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
-import { Job } from "@/lib/definitions";
+import { Job as JobProps } from "@/lib/definitions";
 import { getTimeElapsed } from "@/lib/utils";
 import Image from "next/image";
 import {
@@ -9,7 +9,7 @@ import {
   HiOutlineUser,
 } from "react-icons/hi2";
 
-export default function JobList({ job }: { job: Job }) {
+export default function Job({ job }: { job: JobProps }) {
   return (
     <Card>
       <CardHeader>
