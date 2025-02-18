@@ -1,5 +1,6 @@
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Job } from "@/lib/definitions";
+import { getTimeElapsed } from "@/lib/utils";
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
@@ -40,6 +41,9 @@ export default function JobList({ job }: { job: Job }) {
         <div className="flex items-center gap-2">
           <HiOutlineBanknotes />
           <span>{job.salary}</span>
+        </div>
+        <div className="mt-4 text-sm">
+          {job.createdAt && getTimeElapsed(job.createdAt)}
         </div>
       </CardBody>
     </Card>

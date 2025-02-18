@@ -20,4 +20,5 @@ export interface Job {
   location: string;
   category: string;
   salary: string;
+  createdAt: string;
 }
