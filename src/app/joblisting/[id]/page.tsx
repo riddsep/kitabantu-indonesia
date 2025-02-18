@@ -38,7 +38,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   }, [id, getJobById]);
 
   return (
-    <div className="max-w-[1024px] mx-auto py-8 flex gap-4">
+    <div className="max-w-[1024px] mx-auto py-8 flex flex-col p-2 lg:flex-row gap-4">
       {job ? (
         <>
           <div className="border-2 p-5 shadow rounded-xl flex-1 bg-white">
