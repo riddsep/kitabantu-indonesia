@@ -3,7 +3,7 @@
 import { useJobContext } from "@/context/useJobContext";
 import { useEffect, useState } from "react";
 import { JobListing } from "@/lib/definitions";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
