@@ -13,6 +13,7 @@ export interface JobListing {
 }
 
 export interface Job {
+  id: string;
   imageUrl: string;
   jobTitle: string;
   company: string;

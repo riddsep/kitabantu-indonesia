@@ -1,3 +1,4 @@
+import AboutUs from "@/components/aboutUs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -41,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <AboutUs />
     </div>
   );
 }

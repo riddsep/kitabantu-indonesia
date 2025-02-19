@@ -45,9 +45,9 @@ export default function Page() {
           {!isLoading ? (
             filteredJob.length > 0 ? (
               filteredJob.map((job) => (
-                <Link href={`/joblisting/${job.id}`} key={job.id}>
+                <div key={job.id}> 
                   <JobList job={job} />
-                </Link>
+                </div>
               ))
             ) : (
               <p className="col-span-3 text-center text-xl text-gray-500 ">

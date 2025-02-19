@@ -8,6 +8,8 @@ interface JobContextType {
   jobList: JobListing[];
   getJobById: (id: string) => JobListing | undefined;
   isLoading: boolean;
+  bookmarkedJobs: string[];
+  toggleBookmark: (id: string) => void;
 }
 
 const JobContext = createContext<JobContextType | undefined>(undefined);
@@ -15,6 +17,7 @@ const JobContext = createContext<JobContextType | undefined>(undefined);
 export function JobProvider({ children }: { children: React.ReactNode }) {
   const [jobList, setJobList] = useState<JobListing[]>([]);
   const [isLoading, setLoading] = useState(false);
+  const [bookmarkedJobs, setBookmarkedJobs] = useState<string[]>([]);
 
   useEffect(() => {
     async function getJobList(): Promise<void> {
@@ -37,8 +40,16 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
     return jobList.find((job) => job.id === id);
   }
 
+  function toggleBookmark(id: string) {
+    setBookmarkedJobs((prev) =>
+      prev.includes(id) ? prev.filter((jobId) => jobId !== id) : [...prev, id]
+    );
+  }
+
   return (
-    <JobContext.Provider value={{ jobList, getJobById, isLoading }}>
+    <JobContext.Provider
+      value={{ jobList, getJobById, isLoading, bookmarkedJobs, toggleBookmark }}
+    >
       {children}
     </JobContext.Provider>
   );

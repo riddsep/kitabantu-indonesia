@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer"; // Import the Footer component
 import { JobProvider } from "@/context/useJobContext";
+import AboutUs from "@/components/aboutUs";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,6 +30,7 @@ export default function RootLayout({
           <JobProvider>
             <Navbar />
             <main>{children}</main>
+            <Footer /> 
           </JobProvider>
         </div>
       </body>
