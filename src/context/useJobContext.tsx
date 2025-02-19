@@ -10,6 +10,8 @@ interface JobContextType {
   isLoading: boolean;
   bookmarkedJobs: string[];
   toggleBookmark: (id: string) => void;
+  appliedJobs: string[];
+  applyForJob: (id: string) => void;
 }
 
 const JobContext = createContext<JobContextType | undefined>(undefined);
@@ -18,6 +20,7 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
   const [jobList, setJobList] = useState<JobListing[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [bookmarkedJobs, setBookmarkedJobs] = useState<string[]>([]);
+  const [appliedJobs, setAppliedJobs] = useState<string[]>([]);
 
   useEffect(() => {
     async function getJobList(): Promise<void> {
@@ -25,7 +28,6 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
         setLoading(true);
         const data = await fetchJobListing();
         setJobList(data);
-        console.log(data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -46,9 +48,22 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
     );
   }
 
+
+  function applyForJob(id: string) {
+    setAppliedJobs((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  }
+
   return (
     <JobContext.Provider
-      value={{ jobList, getJobById, isLoading, bookmarkedJobs, toggleBookmark }}
+      value={{
+        jobList,
+        getJobById,
+        isLoading,
+        bookmarkedJobs,
+        toggleBookmark,
+        appliedJobs,
+        applyForJob,
+      }}
     >
       {children}
     </JobContext.Provider>
