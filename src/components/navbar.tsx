@@ -19,7 +19,7 @@ export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-white shadow-md border-b border-gray-300">
+    <nav className="w-full fixed top-0 left-0 z-50  backdrop-blur-xl  border-b border-gray-300">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center px-6 py-3">
         <div className="flex items-center gap-4">
           <Logo />
@@ -30,8 +30,9 @@ export default function Navbar() {
               key={item.title}
               href={item.link}
               className={clsx(
-                "relative text-base font-medium text-gray-700 hover:text-blue-600 transition-all px-4 py-2 uppercase tracking-wide",
-                pathName === item.link && "text-blue-600 font-semibold border-b-2 border-blue-600"
+                "relative text-sm text-gray-700 hover:text-[#00AAFF] transition-all px-4 py-2 uppercase tracking-wide",
+                pathName === item.link &&
+                  "text-blue-600 font-semibold border-b-2 border-[#00AAFF]"
               )}
             >
               {item.title}
@@ -41,7 +42,10 @@ export default function Navbar() {
 
         <div className="relative md:hidden">
           <button onClick={() => setIsActive(!isActive)}>
-            <HiBars3 size={30} className="text-gray-700 hover:text-blue-600 transition-all" />
+            <HiBars3
+              size={30}
+              className="text-gray-700 hover:text-blue-600 transition-all"
+            />
           </button>
 
           {isActive && (
@@ -52,7 +56,8 @@ export default function Navbar() {
                   href={item.link}
                   className={clsx(
                     "text-base text-gray-700 hover:text-blue-600 transition-all px-3 py-2 uppercase",
-                    pathName === item.link && "text-blue-600 font-semibold border-l-4 border-blue-600"
+                    pathName === item.link &&
+                      "text-blue-600 font-semibold border-l-4 border-blue-600"
                   )}
                   onClick={() => setIsActive(false)}
                 >
