@@ -71,14 +71,14 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Our Mission</h4>
                         <p className="text-sm">
-                            Helping businesses grow with innovative and measurable strategies. Let's build the future together!
+                            Helping businesses grow with innovative and measurable strategies. Lets build the future together
                         </p>
                     </div>
                 </div>
                 {/* Bagian Bawah */}
                 <div className="border-t border-indigo-600 pt-6 text-center">
                     <p className="text-sm">
-                        &copy; {new Date().getFullYear()} PT.Kita Bantu Indonesia. All rights reserved.
+                        {new Date().getFullYear()} PT.Kita Bantu Indonesia. All rights reserved.
                     </p>
                 </div>
             </div>

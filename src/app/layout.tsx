@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer"; // Import the Footer component
 import { JobProvider } from "@/context/useJobContext";
-import AboutUs from "@/components/aboutUs";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
