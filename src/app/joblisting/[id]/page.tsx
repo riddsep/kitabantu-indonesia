@@ -3,6 +3,7 @@
 import { useJobContext } from "@/context/useJobContext";
 import { useEffect, useState } from "react";
 import { JobListing } from "@/lib/definitions";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
@@ -15,9 +16,12 @@ import { getTimeElapsed } from "@/lib/utils";
 import Chip from "@/components/ui/chip";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
-  const { getJobById } = useJobContext();
+  const { getJobById, applyForJob } = useJobContext();
   const [job, setJob] = useState<JobListing | null>(null);
   const [id, setId] = useState<string | null>(null);
+
+  const router = useRouter();
+
 
   useEffect(() => {
     async function fetchParams() {
@@ -35,6 +39,13 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     }
   }, [id, getJobById]);
 
+  const handleApplyJob = () => {
+    if (id) {
+      applyForJob(id);
+      router.push("/terkirim");
+    }
+  };
+
   return (
     <div className="max-w-[1024px] mx-auto py-12 flex flex-col lg:flex-row gap-6 px-4 lg:px-0 break-words text-wrap">
       {job ? (
@@ -48,11 +59,13 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 height={70}
                 className="rounded-full border p-2 shadow shrink-0"
               />
-              <div>
-                <h1 className="text-2xl font-semibold break-words mt-2">{job.jobTitle}</h1>
-                <p className="text-[#00AAFF] text-lg break-words">{job.company}</p>
-                <div className="flex flex-col gap-2 my-4 text-gray-700">
-                  <div className="flex items-center gap-2 text-sm">
+
+              <div className="flex-1">
+                <h1 className="text-xl font-semibold">{job.jobTitle}</h1>
+                <p className="text-[#00AAFF]">{job.company}</p>
+                <div className="flex flex-col gap-1 my-4">
+                  <div className="flex items-center gap-2">
+
                     <HiOutlineUser />
                     <span className="break-words">{job.jobType}</span>
                   </div>
@@ -69,7 +82,19 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     <span className="break-words">{job.salary}</span>
                   </div>
                 </div>
-                <Button className="rounded-3xl h-10 text-sm px-6">Lamar Cepat</Button>
+
+                <Button
+                  className="rounded-3xl h-8 text-xs"
+                  onClick={handleApplyJob}
+                >
+                  Lamar Cepat
+                </Button>
+                <div className="mt-5 text-end text-sm md:hidden">
+                  {job.createdAt && getTimeElapsed(job.createdAt)}
+                </div>
+              </div>
+              <div className="ml-auto text-sm hidden md:block">
+                {job.createdAt && getTimeElapsed(job.createdAt)}
               </div>
               <div className="ml-auto text-sm text-gray-500 mt-2">{job.createdAt && getTimeElapsed(job.createdAt)}</div>
             </div>
