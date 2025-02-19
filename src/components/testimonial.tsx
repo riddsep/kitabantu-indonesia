@@ -1,7 +1,8 @@
-"use client"; // Pastikan ini adalah Client Component
+"use client"; // Ensure this is a Client Component
 
 import { useEffect, useRef } from "react";
-import { Card, CardHeader, CardBody } from "@/components/ui/card"; // Sesuaikan dengan path yang benar
+import { Card, CardHeader, CardBody } from "@/components/ui/card"; // Adjust with the correct path
+import Image from "next/image";
 
 export default function Testimonials() {
     const testimonials = [
@@ -84,14 +85,14 @@ export default function Testimonials() {
         if (!scrollContainer) return;
 
         let scrollAmount = 0;
-        const scrollSpeed = 1; // Kecepatan scroll (sesuaikan sesuai kebutuhan)
+        const scrollSpeed = 1; // Adjust scroll speed as needed
 
         const scroll = () => {
             if (scrollContainer) {
                 scrollAmount += scrollSpeed;
                 scrollContainer.scrollLeft = scrollAmount;
 
-                // Jika sudah mencapai akhir, reset scroll ke awal
+                // Reset scroll to the beginning when it reaches the end
                 if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
                     scrollAmount = 0;
                     scrollContainer.scrollLeft = 0;
@@ -102,7 +103,7 @@ export default function Testimonials() {
 
         const animationFrame = requestAnimationFrame(scroll);
 
-        return () => cancelAnimationFrame(animationFrame); // Bersihkan animation frame saat komponen unmount
+        return () => cancelAnimationFrame(animationFrame); // Clean up animation frame on component unmount
     }, []);
 
     return (
@@ -117,21 +118,23 @@ export default function Testimonials() {
                     </p>
                 </div>
 
-                {/* Container untuk horizontal scroll */}
+                {/* Container for horizontal scroll */}
                 <div
                     ref={scrollContainerRef}
                     className="mt-16 overflow-x-auto whitespace-nowrap scrollbar-hide"
                 >
                     <div className="inline-flex gap-6">
                         {testimonials.map((testimonial) => (
-                            <Card key={testimonial.id} >
+                            <Card key={testimonial.id}>
                                 <CardHeader>
-                                    <img
+                                    <Image
                                         src={testimonial.image}
                                         alt={testimonial.name}
+                                        width={50}
+                                        height={50}
                                         className="w-12 h-12 rounded-full"
                                     />
-                                    <div>
+                                    <div className="ml-4">
                                         <p className="text-lg font-semibold">{testimonial.name}</p>
                                         <p className="text-sm text-gray-500">{testimonial.role}</p>
                                     </div>
