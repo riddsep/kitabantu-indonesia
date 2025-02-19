@@ -6,7 +6,6 @@ import Search from "@/components/search";
 import { JobListSkeleton } from "@/components/ui/skeletons";
 import { useJobContext } from "@/context/useJobContext";
 
-import Link from "next/link";
 import { useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
