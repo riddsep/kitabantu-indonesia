@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
                 {/* Bagian Bawah */}
                 <div className="border-t border-indigo-600 pt-6 text-center">
                     <p className="text-sm">
-                        &copy; {new Date().getFullYear()} PT.Kita Bantu Indonesia. All rights reserved.
+                        {new Date().getFullYear()} PT.Kita Bantu Indonesia. All rights reserved.
                     </p>
                 </div>
             </div>

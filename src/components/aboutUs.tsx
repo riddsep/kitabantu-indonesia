@@ -1,5 +1,4 @@
 
-
 export default function AboutUs() {
     return (
         <section className="py-20 ">
