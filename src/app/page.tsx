@@ -1,4 +1,5 @@
 import AboutUs from "@/components/aboutUs";
+import Testimonials from "@/components/testimonial";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -43,6 +44,7 @@ export default function Home() {
         </div>
       </div>
       <AboutUs />
+      <Testimonials/>
     </div>
   );
 }
