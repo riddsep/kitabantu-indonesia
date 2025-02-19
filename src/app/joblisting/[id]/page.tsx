@@ -3,6 +3,7 @@
 import { useJobContext } from "@/context/useJobContext";
 import { useEffect, useState } from "react";
 import { JobListing } from "@/lib/definitions";
+import { useRouter } from "next/navigation"
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
@@ -15,11 +16,10 @@ import { getTimeElapsed } from "@/lib/utils";
 import Chip from "@/components/ui/chip";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
-  const { getJobById } = useJobContext();
+  const { getJobById, applyForJob } = useJobContext();
   const [job, setJob] = useState<JobListing | null>(null);
   const [id, setId] = useState<string | null>(null);
-
-  console.log(job);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchParams() {
@@ -36,6 +36,13 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       setJob(fetchedJob ?? null);
     }
   }, [id, getJobById]);
+
+  const handleApplyJob = () => {
+    if (id) {
+      applyForJob(id);
+      router.push("/terkirim");
+    }
+  };
 
   return (
     <div className="max-w-[1024px] mx-auto py-8 flex flex-col p-2 lg:flex-row gap-4">
@@ -71,7 +78,12 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     <span>{job.salary}</span>
                   </div>
                 </div>
-                <Button className="rounded-3xl h-8 text-xs">Lamar Cepat</Button>
+                <Button
+                  className="rounded-3xl h-8 text-xs"
+                  onClick={handleApplyJob}
+                >
+                  Lamar Cepat
+                </Button>
               </div>
               <div className="ml-auto text-sm">
                 {job.createdAt && getTimeElapsed(job.createdAt)}
