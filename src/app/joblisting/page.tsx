@@ -1,7 +1,7 @@
 "use client";
 
 import Filter from "@/components/filter";
-import JobList from "@/components/job";
+import Job from "@/components/job";
 import Search from "@/components/search";
 import { JobListSkeleton } from "@/components/ui/skeletons";
 import { useJobContext } from "@/context/useJobContext";
@@ -44,8 +44,8 @@ export default function Page() {
           {!isLoading ? (
             filteredJob.length > 0 ? (
               filteredJob.map((job) => (
-                <div key={job.id}> 
-                  <JobList job={job} />
+                <div key={job.id}>
+                  <Job job={job} />
                 </div>
               ))
             ) : (
