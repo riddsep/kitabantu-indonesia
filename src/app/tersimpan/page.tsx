@@ -9,7 +9,7 @@ export default function SavedPage() {
     const savedJobs = jobList.filter((job) => bookmarkedJobs.includes(job.id));
 
     return (
-        <div className="px-4">
+        <div className="px-4 pt-20"> 
             <div className="max-w-[1024px] mx-auto">
                 <h1 className="text-xl lg:text-2xl py-10 text-center font-medium">
                     Pekerjaan Tersimpan

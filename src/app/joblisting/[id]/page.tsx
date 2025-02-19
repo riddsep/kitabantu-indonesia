@@ -3,7 +3,6 @@
 import { useJobContext } from "@/context/useJobContext";
 import { useEffect, useState } from "react";
 import { JobListing } from "@/lib/definitions";
-import { useRouter } from "next/navigation"
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
@@ -16,10 +15,9 @@ import { getTimeElapsed } from "@/lib/utils";
 import Chip from "@/components/ui/chip";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
-  const { getJobById, applyForJob } = useJobContext();
+  const { getJobById } = useJobContext();
   const [job, setJob] = useState<JobListing | null>(null);
   const [id, setId] = useState<string | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchParams() {
@@ -37,80 +35,66 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     }
   }, [id, getJobById]);
 
-  const handleApplyJob = () => {
-    if (id) {
-      applyForJob(id);
-      router.push("/terkirim");
-    }
-  };
-
   return (
-    <div className="max-w-[1024px] mx-auto py-8 flex flex-col p-2 lg:flex-row gap-4">
+    <div className="max-w-[1024px] mx-auto py-12 flex flex-col lg:flex-row gap-6 px-4 lg:px-0 break-words text-wrap">
       {job ? (
         <>
-          <div className="border-2 p-5 shadow rounded-xl flex-1 bg-white">
-            <div className="flex gap-4 pb-10 border-b border-black/10">
+          <div className="border-2 p-6 shadow rounded-xl flex-1 bg-white">
+            <div className="flex gap-4 pb-6 border-b border-black/10 items-start">
               <Image
                 src={job.imageUrl}
                 alt="company logo"
-                width={60}
-                height={60}
-                className="rounded-full border-sm p-2 shadow shrink-0 self-start"
+                width={70}
+                height={70}
+                className="rounded-full border p-2 shadow shrink-0"
               />
               <div>
-                <h1 className="text-xl font-semibold">{job.jobTitle}</h1>
-                <p className="text-[#00AAFF]">{job.company}</p>
-                <div className="flex flex-col gap-1 my-4">
-                  <div className="flex items-center gap-2">
+                <h1 className="text-2xl font-semibold break-words mt-2">{job.jobTitle}</h1>
+                <p className="text-[#00AAFF] text-lg break-words">{job.company}</p>
+                <div className="flex flex-col gap-2 my-4 text-gray-700">
+                  <div className="flex items-center gap-2 text-sm">
                     <HiOutlineUser />
-                    <span>{job.jobType}</span>
+                    <span className="break-words">{job.jobType}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-sm">
                     <HiOutlineMapPin />
-                    <span>{job.location}</span>
+                    <span className="break-words">{job.location}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-sm">
                     <HiOutlineBriefcase />
-                    <span>{job.category}</span>
+                    <span className="break-words">{job.category}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-sm">
                     <HiOutlineBanknotes />
-                    <span>{job.salary}</span>
+                    <span className="break-words">{job.salary}</span>
                   </div>
                 </div>
-                <Button
-                  className="rounded-3xl h-8 text-xs"
-                  onClick={handleApplyJob}
-                >
-                  Lamar Cepat
-                </Button>
+                <Button className="rounded-3xl h-10 text-sm px-6">Lamar Cepat</Button>
               </div>
-              <div className="ml-auto text-sm">
-                {job.createdAt && getTimeElapsed(job.createdAt)}
-              </div>
+              <div className="ml-auto text-sm text-gray-500 mt-2">{job.createdAt && getTimeElapsed(job.createdAt)}</div>
             </div>
-            <div className="py-5">
+            <div className="py-6">
               <div>
-                <h1 className="font-semibold ">Deskripsi Pekerjaan</h1>
-                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-sm">
+                <h1 className="font-semibold text-lg">Deskripsi Pekerjaan</h1>
+                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-base text-gray-700">
                   {job.jobDesc.map((desc) => (
-                    <li key={desc}>{desc}</li>
+                    <li key={desc} className="break-words">{desc}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h1 className="font-semibold">Kualifikasi</h1>
-                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-sm">
+                <h1 className="font-semibold text-lg">Kualifikasi</h1>
+                <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-base text-gray-700">
                   {job.jobReq.map((desc) => (
-                    <li key={desc}>{desc}</li>
+                    <li key={desc} className="break-words">{desc}</li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
-          <div className="border-2 p-5 shadow rounded-xl bg-white h-fit">
-            <h1 className="font-semibold">Benefit Perusahaan</h1>
-            <div className="my-2 flex flex-wrap gap-2 max-w-80">
+          <div className="border-2 p-6 shadow rounded-xl bg-white h-fit w-full lg:max-w-[300px]">
+            <h1 className="font-semibold text-lg mb-4">Benefit Perusahaan</h1>
+            <div className="flex flex-wrap gap-2">
               <Chip>💸 Competitive Salary</Chip>
               <Chip>🎁 THR / Bonus system</Chip>
               <Chip>🍗 Free lunch</Chip>
@@ -120,7 +104,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <p className="text-center text-gray-600">Loading...</p>
       )}
     </div>
   );
