@@ -3,7 +3,7 @@
 import { useJobContext } from "@/context/useJobContext";
 import { useEffect, useState } from "react";
 import { JobListing } from "@/lib/definitions";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   HiOutlineBanknotes,
@@ -57,7 +57,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 height={60}
                 className="rounded-full border-sm p-2 shadow shrink-0 self-start"
               />
-              <div>
+              <div className="flex-1">
                 <h1 className="text-xl font-semibold">{job.jobTitle}</h1>
                 <p className="text-[#00AAFF]">{job.company}</p>
                 <div className="flex flex-col gap-1 my-4">
@@ -84,8 +84,11 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 >
                   Lamar Cepat
                 </Button>
+                <div className="mt-5 text-end text-sm md:hidden">
+                  {job.createdAt && getTimeElapsed(job.createdAt)}
+                </div>
               </div>
-              <div className="ml-auto text-sm">
+              <div className="ml-auto text-sm hidden md:block">
                 {job.createdAt && getTimeElapsed(job.createdAt)}
               </div>
             </div>
