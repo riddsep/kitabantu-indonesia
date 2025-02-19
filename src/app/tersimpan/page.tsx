@@ -8,6 +8,7 @@ export default function SavedPage() {
   const { bookmarkedJobs, jobList, isLoading } = useJobContext();
   const savedJobs = jobList.filter((job) => bookmarkedJobs.includes(job.id));
 
+
   return (
     <div className="px-4">
       <div className="max-w-[1024px] mx-auto">

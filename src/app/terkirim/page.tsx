@@ -1,6 +1,7 @@
 "use client";
 
 import { useJobContext } from "@/context/useJobContext";
+
 import { JobListSkeleton } from "@/components/ui/skeletons";
 import Job from "@/components/job";
 
