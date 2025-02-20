@@ -1,5 +1,5 @@
 export function Card({ children }: { children: React.ReactNode }) {
-  return <div className=" rounded-md bg-white p-5 shadow-md">{children}</div>;
+  return <div className=" rounded-md bg-white p-5 shadow-md transform transition-transform hover:scale-105">{children}</div>;
 }
 
 export function CardHeader({ children }: { children: React.ReactNode }) {
