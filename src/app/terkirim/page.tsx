@@ -9,7 +9,9 @@ export default function AppliedPage() {
     const submittedJobs = jobList.filter((job) => appliedJobs.includes(job.id));
 
     return (
-        <div className="px-4 pt-20">
+
+        <div className={`px-4 ${submittedJobs.length === 0 ? "my-32" : "my-24"}`}>
+
             <div className="max-w-[1024px] mx-auto">
                 <h1 className="text-xl lg:text-2xl py-10 text-center font-medium">
                     Pekerjaan Terkirim
@@ -19,13 +21,18 @@ export default function AppliedPage() {
                         submittedJobs.length > 0 ? (
                             submittedJobs.map((job) => (
                                 <div key={job.id}>
-                                    <JobList job={job} />
+
+                                    <JobList job={job} isApplied={true} />
+
+ 
                                 </div>
                             ))
                         ) : (
                             <p className="col-span-3 text-center text-xl text-gray-500">
                                 Tidak ada pekerjaan yang telah dilamar.
-                            </p>
+
+
+
                         )
                     ) : (
                         Array.from({ length: 3 }).map((_, index) => (
