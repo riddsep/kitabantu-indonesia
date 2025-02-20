@@ -10,7 +10,7 @@ export default function AppliedPage() {
   const submittedJobs = jobList.filter((job) => appliedJobs.includes(job.id));
 
   return (
-    <div className="px-4">
+    <div className={`px-4 ${submittedJobs.length === 0 ? "my-32" : "my-24"}`}>
       <div className="max-w-[1024px] mx-auto">
         <h1 className="text-xl lg:text-2xl py-10 text-center font-medium">
           Pekerjaan Terkirim
