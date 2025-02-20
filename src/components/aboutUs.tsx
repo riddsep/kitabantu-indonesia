@@ -1,4 +1,7 @@
-import React from 'react';
+"use client"; // Pastikan ini adalah Client Component
+
+import React from "react";
+import CountUp from "react-countup";
 
 export default function AboutUs() {
   return (
@@ -22,20 +25,28 @@ export default function AboutUs() {
           {/* Right Section - Stats */}
           <div className="lg:w-1/3 mt-8 lg:mt-0 flex flex-col space-y-8 sm:space-y-12 text-white text-center">
             <div>
-              <p className="text-4xl sm:text-5xl text-[#FFD700] font-extrabold">10,000+</p>
+              <p className="text-4xl sm:text-5xl text-[#FFD700] font-extrabold">
+                <CountUp start={0} end={10000} duration={3} separator="," />+
+              </p>
               <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Kesempatan Karier</p>
             </div>
             <div>
-              <p className="text-4xl sm:text-5xl text-[#00FFC6] font-extrabold">5,000+</p>
+              <p className="text-4xl sm:text-5xl text-[#00FFC6] font-extrabold">
+                <CountUp start={0} end={5000} duration={3} separator="," />+
+              </p>
               <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Talenta Terhubung</p>
             </div>
             <div>
-              <p className="text-4xl sm:text-5xl font-extrabold">500+</p>
+              <p className="text-4xl sm:text-5xl font-extrabold">
+                <CountUp start={0} end={500} duration={3} separator="," />+
+              </p>
               <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Perusahaan Bermitra</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Bottom Section - Cards */}
       <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-8 sm:mt-10">
         {["Peluang Karier Terbaik", "Dukungan di Setiap Langkah", "Jembatan Menuju Masa Depan"].map((text, index) => (
           <div
