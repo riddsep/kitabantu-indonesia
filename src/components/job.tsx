@@ -12,9 +12,9 @@ import {
 } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useJobContext } from "@/context/useJobContext"; // Sesuaikan dengan path yang benar
+import { useJobContext } from "@/context/useJobContext";
 
-export default function Job({ job }: { job: JobProps }) {
+export default function Job({ job, isApplied = false }: { job: JobProps; isApplied?: boolean }) {
   const { bookmarkedJobs, toggleBookmark } = useJobContext();
   const isBookmarked = bookmarkedJobs.includes(job.id);
 
@@ -61,11 +61,17 @@ export default function Job({ job }: { job: JobProps }) {
           {job.createdAt && getTimeElapsed(job.createdAt)}
         </div>
       </CardBody>
-      <Link href={`/joblisting/${job.id}`} passHref>
-        <Button className="w-full justify-center text-white py-2 rounded-md mt-4">
-          Detail
+      {isApplied ? (
+        <Button className="w-full justify-center bg-gray-300 text-gray-600 py-2 rounded-md mt-4 cursor-not-allowed hover:bg-gray-300" disabled>
+          Terkirim
         </Button>
-      </Link>
+      ) : (
+        <Link href={`/joblisting/${job.id}`} passHref>
+          <Button className="w-full justify-center text-white py-2 rounded-md mt-4">
+            Detail
+          </Button>
+        </Link>
+      )}
     </Card>
   );
 }

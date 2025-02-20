@@ -1,9 +1,8 @@
 "use client";
 
 import { useJobContext } from "@/context/useJobContext";
-
+import JobList from "@/components/job";
 import { JobListSkeleton } from "@/components/ui/skeletons";
-import Job from "@/components/job";
 
 export default function AppliedPage() {
   const { appliedJobs, jobList, isLoading } = useJobContext();
@@ -20,7 +19,7 @@ export default function AppliedPage() {
             submittedJobs.length > 0 ? (
               submittedJobs.map((job) => (
                 <div key={job.id}>
-                  <Job job={job} />
+                  <JobList job={job} isApplied={true} />
                 </div>
               ))
             ) : (
