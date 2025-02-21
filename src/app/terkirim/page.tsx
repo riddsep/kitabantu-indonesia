@@ -24,15 +24,12 @@ export default function AppliedPage() {
 
                                     <JobList job={job} isApplied={true} />
 
- 
+
                                 </div>
                             ))
                         ) : (
                             <p className="col-span-3 text-center text-xl text-gray-500">
-                                Tidak ada pekerjaan yang telah dilamar.
-
-
-
+                                Tidak ada pekerjaan yang telah dilamar.</p>
                         )
                     ) : (
                         Array.from({ length: 3 }).map((_, index) => (

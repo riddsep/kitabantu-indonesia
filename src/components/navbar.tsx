@@ -12,6 +12,7 @@ const data = [
   { title: "Loker", link: "/joblisting" },
   { title: "Tersimpan", link: "/tersimpan" },
   { title: "Terkirim", link: "/terkirim" },
+  { title: "Buat Akun", link: "/akun" },
 ];
 
 export default function Navbar() {
@@ -32,7 +33,7 @@ export default function Navbar() {
               className={clsx(
                 "relative text-sm text-gray-700 hover:text-[#00AAFF] transition-all px-4 py-2 uppercase tracking-wide",
                 pathName === item.link &&
-                  "text-blue-600 font-semibold border-b-2 border-[#00AAFF]"
+                "text-blue-600 font-semibold border-b-2 border-[#00AAFF]"
               )}
             >
               {item.title}
@@ -57,7 +58,7 @@ export default function Navbar() {
                   className={clsx(
                     "text-base text-gray-700 hover:text-blue-600 transition-all px-3 py-2 uppercase",
                     pathName === item.link &&
-                      "text-blue-600 font-semibold border-l-4 border-blue-600"
+                    "text-blue-600 font-semibold border-l-4 border-blue-600"
                   )}
                   onClick={() => setIsActive(false)}
                 >

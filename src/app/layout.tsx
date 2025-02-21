@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer"; // Import the Footer component
 import { JobProvider } from "@/context/useJobContext";
-
+import LayoutWrapper from "@/components/LayoutWrapper"; // Import komponen wrapper baru
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,17 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${poppins.className}  antialiased bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]`}
-      >
-        <div>
-          <JobProvider>
-            <Navbar />
+    <html lang="id">
+      <body className={`${poppins.className} antialiased bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2]`}>
+        <JobProvider>
+          <Navbar />
+          <LayoutWrapper>
             <main>{children}</main>
-            <Footer /> 
-          </JobProvider>
-        </div>
+          </LayoutWrapper>
+        </JobProvider>
       </body>
     </html>
   );
