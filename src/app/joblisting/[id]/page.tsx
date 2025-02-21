@@ -44,10 +44,10 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   };
 
   return (
-    <div className="max-w-[1024px] mx-auto py-12 flex flex-col lg:flex-row gap-6 px-4 lg:px-0 break-words text-wrap">
+    <div className="max-w-[1024px] mx-auto py-12 mt-10 flex flex-col lg:flex-row gap-6 px-4 lg:px-0 break-words text-wrap">
       {job ? (
         <>
-          <div className="border-2 p-6 shadow rounded-xl flex-1 bg-white">
+          <div className="border-2 p-6  shadow rounded-xl flex-1 bg-white">
             <div className="flex gap-4 pb-6 border-b border-black/10 items-start">
               <Image
                 src={job.imageUrl}
@@ -57,8 +57,12 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 className="rounded-full border p-2 shadow shrink-0"
               />
               <div className="flex-1">
-                <h1 className="text-2xl font-semibold break-words mt-2">{job.jobTitle}</h1>
-                <p className="text-[#00AAFF] text-lg break-words">{job.company}</p>
+                <h1 className="text-2xl font-semibold break-words mt-2">
+                  {job.jobTitle}
+                </h1>
+                <p className="text-[#00AAFF] text-lg break-words">
+                  {job.company}
+                </p>
                 <div className="flex flex-col gap-2 my-4 text-gray-700">
                   <div className="flex items-center gap-2 text-sm">
                     <HiOutlineUser />
@@ -77,7 +81,12 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     <span className="break-words">{job.salary}</span>
                   </div>
                 </div>
-                <Button className="rounded-3xl h-10 text-sm px-6" onClick={handleApplyJob}>Lamar Cepat</Button>
+                <Button
+                  className="rounded-3xl h-10 text-sm px-6"
+                  onClick={handleApplyJob}
+                >
+                  Lamar Cepat
+                </Button>
                 <div className="mt-5 text-end text-sm md:hidden">
                   {job.createdAt && getTimeElapsed(job.createdAt)}
                 </div>
@@ -90,13 +99,17 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               <h1 className="font-semibold text-lg">Deskripsi Pekerjaan</h1>
               <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-base text-gray-700">
                 {job.jobDesc.map((desc) => (
-                  <li key={desc} className="break-words">{desc}</li>
+                  <li key={desc} className="break-words">
+                    {desc}
+                  </li>
                 ))}
               </ul>
               <h1 className="font-semibold text-lg">Kualifikasi</h1>
               <ul className="list-disc list-outside pl-5 marker:text-[#00AAFF] my-4 text-base text-gray-700">
                 {job.jobReq.map((desc) => (
-                  <li key={desc} className="break-words">{desc}</li>
+                  <li key={desc} className="break-words">
+                    {desc}
+                  </li>
                 ))}
               </ul>
             </div>

@@ -15,7 +15,10 @@ export default function AboutUs() {
             </h2>
 
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-[#EAEAEA] leading-relaxed">
-              BANTU hadir untuk membantu Anda menemukan pekerjaan dan magang yang sesuai dengan keahlian dan minat Anda. Kami percaya bahwa setiap individu memiliki potensi untuk berkembang dengan kesempatan yang tepat.
+              BANTU hadir untuk membantu Anda menemukan pekerjaan dan magang
+              yang sesuai dengan keahlian dan minat Anda. Kami percaya bahwa
+              setiap individu memiliki potensi untuk berkembang dengan
+              kesempatan yang tepat.
             </p>
             <button className="mt-4 sm:mt-6 flex items-center gap-2 text-white font-bold border-b-2 border-white pb-1 transition hover:text-gray-200 hover:border-gray-200">
               Pelajari Lebih Lanjut →
@@ -28,19 +31,25 @@ export default function AboutUs() {
               <p className="text-4xl sm:text-5xl text-[#FFD700] font-extrabold">
                 <CountUp start={0} end={10000} duration={3} separator="," />+
               </p>
-              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Kesempatan Karier</p>
+              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">
+                Kesempatan Karier
+              </p>
             </div>
             <div>
               <p className="text-4xl sm:text-5xl text-[#00FFC6] font-extrabold">
                 <CountUp start={0} end={5000} duration={3} separator="," />+
               </p>
-              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Talenta Terhubung</p>
+              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">
+                Talenta Terhubung
+              </p>
             </div>
             <div>
               <p className="text-4xl sm:text-5xl font-extrabold">
                 <CountUp start={0} end={500} duration={3} separator="," />+
               </p>
-              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">Perusahaan Bermitra</p>
+              <p className="text-gray-300 text-base sm:text-lg drop-shadow-sm">
+                Perusahaan Bermitra
+              </p>
             </div>
           </div>
         </div>
@@ -48,7 +57,11 @@ export default function AboutUs() {
 
       {/* Bottom Section - Cards */}
       <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-8 sm:mt-10">
-        {["Peluang Karier Terbaik", "Dukungan di Setiap Langkah", "Jembatan Menuju Masa Depan"].map((text, index) => (
+        {[
+          "Peluang Karier Terbaik",
+          "Dukungan di Setiap Langkah",
+          "Jembatan Menuju Masa Depan",
+        ].map((text, index) => (
           <div
             key={index}
             className="bg-gradient-to-b from-blue-400 to-blue-600 text-white text-lg sm:text-xl font-semibold text-center px-4 sm:px-6 py-6 sm:py-8 rounded-2xl w-full"
